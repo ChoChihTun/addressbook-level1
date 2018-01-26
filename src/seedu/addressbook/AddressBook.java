@@ -228,11 +228,11 @@ public class AddressBook {
      */
 
     private static void showWelcomeMessage() {
-        showToUser(DIVIDER + '\n' + DIVIDER + '\n' + VERSION + '\n' + MESSAGE_WELCOME + '\n' + DIVIDER);
+        showToUser(DIVIDER + '\n' + LINE_PREFIX + DIVIDER + '\n' + LINE_PREFIX + VERSION + '\n' + LINE_PREFIX + MESSAGE_WELCOME + '\n' + LINE_PREFIX + DIVIDER);
     }
 
     private static void showResultToUser(String result) {
-        showToUser(result + '\n' + DIVIDER);
+        showToUser(result + '\n' + LINE_PREFIX + DIVIDER);
     }
 
     /*
@@ -292,7 +292,7 @@ public class AddressBook {
      * Displays the goodbye message and exits the runtime.
      */
     private static void exitProgram() {
-        showToUser(MESSAGE_GOODBYE + '\n' + DIVIDER + '\n' + DIVIDER);
+        showToUser(MESSAGE_GOODBYE + '\n' + LINE_PREFIX + DIVIDER + '\n' + LINE_PREFIX + DIVIDER);
         System.exit(0);
     }
 
@@ -453,9 +453,7 @@ public class AddressBook {
     private static String executeFindPersons(String commandArgs) {
         final Set<String> keywords = extractKeywordsFromFindPersonArgs(commandArgs);
         final ArrayList<HashMap<String,String>> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
-        /** List out the ppl found with their details */
         showToUser(personsFound);
-        /** Display the number of person found */
         return getMessageForPersonsDisplayedSummary(personsFound);
     }
 
@@ -632,7 +630,7 @@ public class AddressBook {
      */
     private static void showToUser(ArrayList<HashMap<String,String>> persons) {
         String listAsString = getDisplayString(persons);
-        showToUser(listAsString); // List out the people found
+        showToUser(listAsString);
         updateLatestViewedPersonListing(persons);
     }
 
@@ -870,7 +868,7 @@ public class AddressBook {
      * @return constructed person
      */
     private static HashMap<String,String> makePersonFromData(String name, String phone, String email) {
-        final HashMap<String,String> person = new HashMap<>();
+        final HashMap<String,String> person = new HashMap<>(PERSON_DATA_COUNT);
         person.put(PERSON_PROPERTY_NAME, name);
         person.put(PERSON_PROPERTY_PHONE, phone);
         person.put(PERSON_PROPERTY_EMAIL, email);
