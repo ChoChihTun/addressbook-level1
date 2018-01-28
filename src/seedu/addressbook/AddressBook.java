@@ -531,7 +531,7 @@ public class AddressBook {
     private static boolean isDeletePersonArgsValid(String rawArgs) {
         try {
             final int extractedIndex = Integer.parseInt(rawArgs.trim()); // use standard libraries to parse
-            return extractedIndex >= DISPLAYED_INDEX_OFFSET;
+            return isIndexLargerThanLowestDisplayedIndex(extractedIndex);
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -554,7 +554,16 @@ public class AddressBook {
      * @return whether it is valid
      */
     private static boolean isDisplayIndexValidForLastPersonListingView(int index) {
-        return index >= DISPLAYED_INDEX_OFFSET && index < latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET;
+        return isIndexLargerThanLowestDisplayedIndex(index) && index < latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET;
+    }
+
+    /**
+     * Checks that the given index is larger than the lowest displayed index
+     * @param index to check
+     * @return whether it is valid
+     */
+    private static boolean isIndexLargerThanLowestDisplayedIndex(int index) {
+        return index >= DISPLAYED_INDEX_OFFSET;
     }
 
     /**
