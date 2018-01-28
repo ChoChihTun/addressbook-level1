@@ -514,7 +514,7 @@ public class AddressBook {
             return getMessageForInvalidCommandInput(COMMAND_DELETE_WORD, getUsageInfoForDeleteCommand());
         }
         final int targetVisibleIndex = extractTargetIndexFromDeletePersonArgs(commandArgs);
-        if (!isDisplayIndexValidForLastPersonListingView(targetVisibleIndex)) {
+        if (!isDisplayIndexValidForLastPersonListingView(targetVisibleIndex, latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET)) {
             return MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         }
         final HashMap<String, String> targetInModel = getPersonByLastVisibleIndex(targetVisibleIndex);
@@ -551,10 +551,11 @@ public class AddressBook {
      * Checks that the given index is within bounds and valid for the last shown person list view.
      *
      * @param index to check
+     * @param highestDisplayedIndex Upper bound for index
      * @return whether it is valid
      */
-    private static boolean isDisplayIndexValidForLastPersonListingView(int index) {
-        return isIndexLargerThanLowestDisplayedIndex(index) && isIndexSmallerThanHighestDisplayedIndex(index, latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET);
+    private static boolean isDisplayIndexValidForLastPersonListingView(int index, int highestDisplayedIndex) {
+        return isIndexLargerThanLowestDisplayedIndex(index) && isIndexSmallerThanHighestDisplayedIndex(index, highestDisplayedIndex);
     }
 
     /**
