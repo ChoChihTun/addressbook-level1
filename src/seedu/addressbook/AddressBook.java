@@ -554,7 +554,17 @@ public class AddressBook {
      * @return whether it is valid
      */
     private static boolean isDisplayIndexValidForLastPersonListingView(int index) {
-        return isIndexLargerThanLowestDisplayedIndex(index) && index < latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET;
+        return isIndexLargerThanLowestDisplayedIndex(index) && isIndexSmallerThanHighestDisplayedIndex(index, latestPersonListingView.size() + DISPLAYED_INDEX_OFFSET);
+    }
+
+    /**
+     * Checks that the given index is smaller than the highest displayed index
+     * @param index to check
+     * @param highestDisplayedIndex Upper bound for index
+     * @return whether it is valid
+     */
+    private static boolean isIndexSmallerThanHighestDisplayedIndex(int index, int highestDisplayedIndex) {
+        return index < highestDisplayedIndex;
     }
 
     /**
