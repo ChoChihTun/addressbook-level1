@@ -211,6 +211,15 @@ public class AddressBook {
         showWelcomeMessage();
         processProgramArgs(args);
         loadDataFromStorage();
+        processUserCommand();
+        return;
+    }
+
+    /**
+     * Each iteration scans user command and executes it
+     * Exit loop when "exit" is entered by user
+     */
+    private static void processUserCommand() {
         while (true) {
             String userCommand = getUserInput();
             echoUserCommand(userCommand);
