@@ -212,7 +212,6 @@ public class AddressBook {
         processProgramArgs(args);
         loadDataFromStorage();
         processUserCommand();
-        return;
     }
 
     /**
