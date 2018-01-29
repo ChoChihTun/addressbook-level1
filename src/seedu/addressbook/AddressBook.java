@@ -349,7 +349,17 @@ public class AddressBook {
      */
     private static boolean hasValidFileName(Path filePath) {
         return isFileNameValid(filePath)
-                && (!Files.exists(filePath) || Files.isRegularFile(filePath));
+                && isRegularFileExists(filePath);
+    }
+
+    /**
+     * Check if file does not exist
+     * If file exists, check if it is regular
+     * @param filePath to check
+     * @return true if file does not exist or existing file is regular
+     */
+    private static boolean isRegularFileExists(Path filePath) {
+        return !Files.exists(filePath) || Files.isRegularFile(filePath);
     }
 
     /**
