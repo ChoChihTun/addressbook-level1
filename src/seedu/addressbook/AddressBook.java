@@ -287,6 +287,8 @@ public class AddressBook {
      * Sets up the storage file based on the supplied file path.
      * Creates the file if it is missing.
      * Exits if the file name is not acceptable.
+     *
+     * @param filePath file to be set up
      */
     private static void setupGivenFileForStorage(String filePath) {
 
@@ -341,6 +343,10 @@ public class AddressBook {
 
     /**
      * Returns true if the file path has a parent directory that exists.
+     *
+     * @param filePath file's parent directory to be checked
+     * @return true: parent directory exists
+     *         false: parent directory doesn't exist
      */
     private static boolean hasValidParentDirectory(Path filePath) {
         Path parentDirectory = filePath.getParent();
@@ -352,6 +358,10 @@ public class AddressBook {
      * File name is valid if it has an extension and no reserved characters.
      * Reserved characters are OS-dependent.
      * If a file already exists, it must be a regular file.
+     *
+     * @param filePath file's name to be checked
+     * @return true: name is valid
+     *         false: name is invalid
      */
     private static boolean hasValidFileName(Path filePath) {
         return isFileNameValid(filePath)
@@ -673,6 +683,8 @@ public class AddressBook {
 
     /**
      * Shows a message to the user
+     *
+     * @param message string to be printed out
      */
     private static void showToUser(String message) {
             System.out.println(LINE_PREFIX + message);
@@ -682,6 +694,7 @@ public class AddressBook {
      * Shows the list of persons to the user.
      * The list will be indexed, starting from 1.
      *
+     * @param persons list of persons with their details for showing
      */
     private static void showToUser(ArrayList<HashMap<String,String>> persons) {
         String listAsString = getDisplayString(persons);
@@ -691,6 +704,8 @@ public class AddressBook {
 
     /**
      * Returns the display string representation of the list of persons.
+     *
+     * @param persons list of persons with their details for conversion into string
      */
     private static String getDisplayString(ArrayList<HashMap<String,String>> persons) {
         final StringBuilder messageAccumulator = new StringBuilder();
