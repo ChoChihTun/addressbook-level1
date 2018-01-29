@@ -460,7 +460,7 @@ public class AddressBook {
      * @return feedback display message for the operation result
      */
     private static String executeAddPerson(String commandArgs) {
-        // try decoding a person from the raw args
+
         final Optional<HashMap<String,String>> decodeResult = decodePersonFromString(commandArgs);
 
         // checks if args are valid (decode result will not be present if the person is invalid)
@@ -468,7 +468,6 @@ public class AddressBook {
             return getMessageForInvalidCommandInput(COMMAND_ADD_WORD, getUsageInfoForAddCommand());
         }
 
-        // add the person as specified
         final HashMap<String,String> personToAdd = decodeResult.get();
         addPersonToAddressBook(personToAdd);
         return getMessageForSuccessfulAddPerson(personToAdd);
@@ -986,7 +985,6 @@ public class AddressBook {
      *         else: Optional containing decoded person
      */
     private static Optional<HashMap<String,String>> decodePersonFromString(String encoded) {
-        // check that we can extract the parts of a person from the encoded string
         if (!isPersonDataExtractableFrom(encoded)) {
             return Optional.empty();
         }
@@ -1027,7 +1025,7 @@ public class AddressBook {
     private static boolean isPersonDataExtractableFrom(String personData) {
         final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
-        return splitArgs.length == 3 // 3 arguments
+        return splitArgs.length == 3
                 && !splitArgs[0].isEmpty() // non-empty arguments
                 && !splitArgs[1].isEmpty()
                 && !splitArgs[2].isEmpty();
