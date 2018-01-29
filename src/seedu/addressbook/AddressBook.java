@@ -45,7 +45,7 @@ public class AddressBook {
     /**
      * Version info of the program.
      */
-    private static final String VERSION = "AddessBook Level 1 - Version 1.0";
+    private static final String VERSION = "AddressBook Level 1 - Version 1.0";
 
     /**
      * A decorative prefix added to the beginning of lines printed by AddressBook
@@ -236,7 +236,10 @@ public class AddressBook {
      */
 
     private static void showWelcomeMessage() {
-        showToUser(DIVIDER + '\n' + LINE_PREFIX + DIVIDER + '\n' + LINE_PREFIX + VERSION + '\n' + LINE_PREFIX + MESSAGE_WELCOME + '\n' + LINE_PREFIX + DIVIDER);
+        showToUser(DIVIDER + '\n' + LINE_PREFIX + DIVIDER + '\n'
+                + LINE_PREFIX + VERSION + '\n'
+                + LINE_PREFIX + MESSAGE_WELCOME + '\n'
+                + LINE_PREFIX + DIVIDER);
     }
 
     private static void showResultToUser(String result) {
@@ -300,7 +303,9 @@ public class AddressBook {
      * Displays the goodbye message and exits the runtime.
      */
     private static void exitProgram() {
-        showToUser(MESSAGE_GOODBYE + '\n' + LINE_PREFIX + DIVIDER + '\n' + LINE_PREFIX + DIVIDER);
+        showToUser(MESSAGE_GOODBYE + '\n'
+                + LINE_PREFIX + DIVIDER + '\n'
+                + LINE_PREFIX + DIVIDER);
         System.exit(0);
     }
 
@@ -330,7 +335,8 @@ public class AddressBook {
         } catch (InvalidPathException ipe) {
             return false;
         }
-        return hasValidParentDirectory(filePathToValidate) && hasValidFileName(filePathToValidate);
+        return hasValidParentDirectory(filePathToValidate)
+                && hasValidFileName(filePathToValidate);
     }
 
     /**
@@ -573,7 +579,8 @@ public class AddressBook {
      * @return whether it is valid
      */
     private static boolean isDisplayIndexValidForLastPersonListingView(int index, int highestDisplayedIndex) {
-        return isIndexLargerThanLowestDisplayedIndex(index) && isIndexSmallerThanHighestDisplayedIndex(index, highestDisplayedIndex);
+        return isIndexLargerThanLowestDisplayedIndex(index)
+                && isIndexSmallerThanHighestDisplayedIndex(index, highestDisplayedIndex);
     }
 
     /**
@@ -603,7 +610,8 @@ public class AddressBook {
      * @return successful delete person feedback message
      */
     private static String getMessageForSuccessfulDelete(HashMap<String,String> deletedPerson) {
-        return String.format(MESSAGE_DELETE_PERSON_SUCCESS, getMessageForFormattedPersonData(deletedPerson));
+        return String.format(MESSAGE_DELETE_PERSON_SUCCESS,
+                getMessageForFormattedPersonData(deletedPerson));
     }
 
     /**
@@ -690,8 +698,8 @@ public class AddressBook {
             final HashMap<String,String> person = persons.get(i);
             final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
             messageAccumulator.append('\t')
-                              .append(getIndexedPersonListElementMessage(displayIndex, person))
-                              .append(LS);
+                    .append(getIndexedPersonListElementMessage(displayIndex, person))
+                    .append(LS);
         }
         return messageAccumulator.toString();
     }
@@ -704,7 +712,8 @@ public class AddressBook {
      * @return formatted listing message with index
      */
     private static String getIndexedPersonListElementMessage(int visibleIndex, HashMap<String,String> person) {
-        return String.format(MESSAGE_DISPLAY_LIST_ELEMENT_INDEX, visibleIndex) + getMessageForFormattedPersonData(person);
+        return String.format(MESSAGE_DISPLAY_LIST_ELEMENT_INDEX, visibleIndex)
+                + getMessageForFormattedPersonData(person);
     }
 
     /**
@@ -1035,14 +1044,15 @@ public class AddressBook {
 
         // phone is last arg, target is from prefix to end of string
         if (indexOfPhonePrefix > indexOfEmailPrefix) {
-            return removePrefixSign(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
-                    PERSON_DATA_PREFIX_PHONE);
+            return removePrefixSign(
+                    encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
+                            PERSON_DATA_PREFIX_PHONE);
 
         // phone is middle arg, target is from own prefix to next prefix
         } else {
             return removePrefixSign(
                     encoded.substring(indexOfPhonePrefix, indexOfEmailPrefix).trim(),
-                    PERSON_DATA_PREFIX_PHONE);
+                            PERSON_DATA_PREFIX_PHONE);
         }
     }
 
