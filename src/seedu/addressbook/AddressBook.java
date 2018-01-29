@@ -348,8 +348,17 @@ public class AddressBook {
      * If a file already exists, it must be a regular file.
      */
     private static boolean hasValidFileName(Path filePath) {
-        return filePath.getFileName().toString().lastIndexOf('.') > 0
+        return isFileNameValid(filePath)
                 && (!Files.exists(filePath) || Files.isRegularFile(filePath));
+    }
+
+    /**
+     * Check if the file name is valid
+     * @param filePath for checking its name
+     * @return Whether the file name is valid
+     */
+    private static boolean isFileNameValid(Path filePath) {
+        return filePath.getFileName().toString().lastIndexOf('.') > 0;
     }
 
     /**
