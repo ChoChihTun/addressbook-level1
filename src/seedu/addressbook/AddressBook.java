@@ -18,11 +18,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.HashMap;
 
 /*
  * NOTE : =============================================================
@@ -529,7 +530,9 @@ public class AddressBook {
         final ArrayList<HashMap<String,String>> matchedPersons = new ArrayList<>();
         for (HashMap<String,String> person : getAllPersonsInAddressBook()) {
             final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            Collection<String> lowerCaseKeywords = convertUpperCaseToLowerCase(keywords);
+            Collection<String> lowerCaseWordsInName = convertUpperCaseToLowerCase(wordsInName);
+            if (!Collections.disjoint(lowerCaseWordsInName, lowerCaseKeywords)) {
                 matchedPersons.add(person);
             }
         }
@@ -1231,6 +1234,18 @@ public class AddressBook {
      */
     private static ArrayList<String> splitByWhitespace(String toSplit) {
         return new ArrayList<>(Arrays.asList(toSplit.trim().split("\\s+")));
+    }
+
+    /**
+     * Convert collection of words into lower case
+     *
+     * @param words strings to be converted
+     * @return collection of lower case words
+     */
+    private static Collection<String> convertUpperCaseToLowerCase(Collection<String> words) {
+        List<String> lowerCaseWords = new ArrayList<>(words);
+        lowerCaseWords.replaceAll(String :: toLowerCase);
+        return lowerCaseWords;
     }
 
 }
