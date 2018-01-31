@@ -55,7 +55,7 @@
 || 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
 || 	Example: add John Doe p/98765432 e/johnd@gmail.com
 || 
-|| find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| find: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
 || 	Parameters: KEYWORD [MORE_KEYWORDS]
 || 	Example: find alice bob charlie
 || 
@@ -65,6 +65,10 @@
 || delete: Deletes a person identified by the index number used in the last find/list call.
 || 	Parameters: INDEX
 || 	Example: delete 1
+|| 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
 || 
 || clear: Clears address book permanently.
 || 	Example: clear
@@ -265,6 +269,94 @@
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  edit]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  edit should have only two parameters]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  edit -1 name]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  edit 0 name]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  edit 3 name]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 unknownProperty]
+|| The property unknownProperty does not exist
+|| ===================================================
+|| Enter command: || [Command entered:   edit 1 name]
+|| Enter new name: || [Command entered:   []\[;]]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:   edit 1 phone]
+|| Enter new phone: || [Command entered:   not_numbers]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:   edit 1 email]
+|| Enter new email: || [Command entered:   notAnEmail]
+|| Invalid command format: edit 
+|| edit: Edits a person's property identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX PROPERTY
+|| 	Example: edit 1 name
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 name]
+|| Enter new name: || [Command entered:  Adam Brown]
+|| Edited Person: Adam Brown  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 phone]
+|| Enter new phone: || [Command entered:  111111]
+|| Edited Person: Adam Brown  Phone Number: 111111  Email: benchoo@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: benchoo@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 email]
+|| Enter new email: || [Command entered:  adam@gmail.com]
+|| Edited Person: Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
 || 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
 || 
 || 2 persons found!
