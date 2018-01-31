@@ -110,12 +110,12 @@
   edit 1 unknownProperty
 
   # should catch invalid person data
-   edit 1 name
-   []\[;]
-   edit 1 phone
-   not_numbers
-   edit 1 email
-   notAnEmail
+  edit 1 name
+  []\[;]
+  edit 1 phone
+  not_numbers
+  edit 1 email
+  notAnEmail
 
   # should edit name correctly
   edit 1 name

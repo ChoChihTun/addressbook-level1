@@ -307,24 +307,24 @@
 || Enter command: || [Command entered:  edit 1 unknownProperty]
 || The property unknownProperty does not exist
 || ===================================================
-|| Enter command: || [Command entered:   edit 1 name]
-|| Enter new name: || [Command entered:   []\[;]]
+|| Enter command: || [Command entered:  edit 1 name]
+|| Enter new name: || [Command entered:  []\[;]]
 || Invalid command format: edit 
 || edit: Edits a person's property identified by the index number used in the last find/list call.
 || 	Parameters: INDEX PROPERTY
 || 	Example: edit 1 name
 || 
 || ===================================================
-|| Enter command: || [Command entered:   edit 1 phone]
-|| Enter new phone: || [Command entered:   not_numbers]
+|| Enter command: || [Command entered:  edit 1 phone]
+|| Enter new phone: || [Command entered:  not_numbers]
 || Invalid command format: edit 
 || edit: Edits a person's property identified by the index number used in the last find/list call.
 || 	Parameters: INDEX PROPERTY
 || 	Example: edit 1 name
 || 
 || ===================================================
-|| Enter command: || [Command entered:   edit 1 email]
-|| Enter new email: || [Command entered:   notAnEmail]
+|| Enter command: || [Command entered:  edit 1 email]
+|| Enter new email: || [Command entered:  notAnEmail]
 || Invalid command format: edit 
 || edit: Edits a person's property identified by the index number used in the last find/list call.
 || 	Parameters: INDEX PROPERTY
